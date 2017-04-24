@@ -1,0 +1,18 @@
+
+<h1 class="current-hospital"><%= params[:hospital] %></h1>
+<div>
+<% if @patients.count == 0 %>
+
+	<h1>There is no patients from this clinic </h1>
+
+<% else %>
+<% @patients.each do |patient| %>
+<div class="reviews">
+
+	<h2><%= link_to patient.name, patient_path(patient) %></h2>
+</div>
+
+<% end %>
+<% end %>
+
+</div>

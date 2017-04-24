@@ -1,0 +1,39 @@
+<div>
+
+<div class="col-md-8">
+
+	<div class="patient-info">
+
+			<h2 class="patient-name">  <%= @patient.name %> </h2>
+			<p class= " "> Date of Birth: <%= @patient.dob %></p>
+			<p class= "details"> Address: <%= @patient.address %></p>
+			<p class= "details"> Phone Number: <%= @patient.phone %></p>
+			<p class= "details"> Hospital: <%= @patient.hospital.name %></p>
+	</div>
+
+
+<% if user_signed_in? %>
+	<% if @patient.user_id == current_user.id %>
+		<%= link_to "Edit", edit_patient_path(@patient), class: "btn-custom" %>
+		<%= link_to "Delete", patient_path(@patient), method: :delete, data: { confirm: "Are you Sure you want to delte the patient?"}, class: "btn-custom" %>
+	<% end %>
+<% end %>
+
+</div>
+
+	<div class="col-md-4"> 
+
+			<div class="reviews">
+		
+		<h1> Recent Visits </h1>
+			<%= render @patient.visits %>
+
+			<%= link_to "Add Visit Information", new_patient_visit_path(@patient), class: "btn-custom" %>
+
+	</div>
+
+</div>
+
+
+
+

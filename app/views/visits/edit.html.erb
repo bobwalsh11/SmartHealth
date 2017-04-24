@@ -1,0 +1,9 @@
+<h1>Edit Visit</h1>
+
+<%= simple_form_for([@patient , @visit]) do |f| %>
+	<%= f.input :hospital %>
+	<%= f.input :department %>
+	<%= f.input :comment %>
+	<%= f.input :date %>
+	<%= f.button :submit %>
+<% end %>

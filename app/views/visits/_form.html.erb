@@ -1,0 +1,8 @@
+<%= simple_form_for([@patient, @patient.visits.build]) do |f| %>
+
+<%= f.input :hospital %>
+<%= f.input :department %>
+<%= f.input :comment %>
+<%= f.input :date %>
+<%= f.button :submit %>
+<% end %>

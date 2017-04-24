@@ -1,0 +1,15 @@
+
+<%# using the simple form to help users create new patient%>
+<%= simple_form_for @patient do |f| %>
+
+<%= select_tag(:hospital_id, options_for_select(@hospitals), :prompt => "Select a Hospital") %>
+
+<%= f.input :name, label: "Full Name" %>
+<%= f.input :dob, label: "Date of Birth" %> 
+<%= f.input :address, label: "Full Address" %>
+<%= f.input :phone, label: "Phone Number"%>
+<%#= f.input :hospital, label: "Hospital" %>
+
+<%= f.button :submit %>
+
+<% end %>

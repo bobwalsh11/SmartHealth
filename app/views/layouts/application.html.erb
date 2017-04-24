@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SmartHealth</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+   <nav class="navbar navbar-default">
+
+      <div class="container">
+
+         <div class="navbar-header">
+          <%= link_to "Smart | Health", root_path, class: "navbar-brand" %>
+         </div>
+
+         <ul class="nav navbar-nav navbar-right">
+        
+        <li><%= link_to "Sign Up", new_user_registration_path %></li>
+
+        <% if user_signed_in? %>
+
+        <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+
+        <% else %>
+        <li><%= link_to "Log In", new_user_session_path %></li>
+        <% end %>
+        </ul>
+
+      <ul class="nav navbar-nav">
+
+        <% if user_signed_in? %>
+          <li><%= link_to "Add Patient", new_patient_path %></li>
+        <% end %> 
+
+        <li class="dropdown">  
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+          Hospitals: <span class="caret"></span>
+        <ul class="dropdown-menu" role="menu">
+            <% Hospital.all.each do |hospital| %>
+              <li class="<%= 'active' if params[:hospital] == hospital.name %>">
+                <%= link_to hospital.name, patients_path(hospital: hospital.name), class: "link" %>
+              </li>
+          <% end %>
+          </ul>
+        </li>
+      </ul>
+      
+
+
+
+      </div>
+    </nav>
+
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+  	
+    <%= yield %>
+  
+  </body>
+</html>

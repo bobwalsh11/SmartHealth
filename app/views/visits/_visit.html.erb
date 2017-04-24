@@ -1,0 +1,14 @@
+<div class="visit">
+		<p class="visit-comment"><%= visit.hospital %></p>
+		<p class="visit-comment"><%= visit.department %></p>
+		<p class="visit-comment"><%= visit.comment %></p>
+		<p class="visit-comment"><%= visit.date %></p>
+
+		<div class="links btn-group"></div>
+
+			<%= link_to "Edit", edit_patient_visit_path(visit.patient, visit), class: "btn btn-custom" %>
+
+			<%= link_to "Delete", patient_visit_path(visit.patient, visit), method: :delete, data: { confirm: " Are you Sure??"}, class: "btn btn-custom" %>
+ 
+		</div>
+</div>
